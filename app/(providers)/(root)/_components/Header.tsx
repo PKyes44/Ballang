@@ -5,9 +5,11 @@ import Page from "@/components/Page";
 import useAuthStore from "@/zustand/auth.store";
 import { useMutation } from "@tanstack/react-query";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 function Header() {
+	const router = useRouter();
 	const isAuthinitialzed = useAuthStore((state) => state.isAuthinitialzed);
 	const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
 	const setIsLoggedIn = useAuthStore((state) => state.setIsLoggedIn);
@@ -22,7 +24,10 @@ function Header() {
 		},
 	});
 
-	const handleShowLogInForm = () => {};
+	const handleShowLogInForm = () => {
+		router.push("/");
+		setIsShowLogInForm();
+	};
 
 	return (
 		<header className="h-16 border-b">

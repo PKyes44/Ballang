@@ -3,11 +3,11 @@ import { AuthData } from "@/types/auth.type";
 import axios from "axios";
 import { sign } from "crypto";
 
-const baseURL = "https://api.ballang.yoojinyoung.com";
+const baseURL = "https://api.ballang.yoojinyoung.com/auth";
 const authClient = axios.create({ baseURL });
 
 async function signUp(signUpData: AuthData) {
-	const response = await authClient.post("/auth/sign-up", signUpData, {
+	const response = await authClient.post("/sign-up", signUpData, {
 		withCredentials: true,
 	});
 	const result = response.data;
@@ -15,7 +15,7 @@ async function signUp(signUpData: AuthData) {
 }
 
 async function logIn(logInData: AuthData) {
-	const response = await authClient.post("/auth/log-in", logInData, {
+	const response = await authClient.post("/log-in", logInData, {
 		withCredentials: true,
 	});
 	const result = response.data;
@@ -27,7 +27,7 @@ async function logIn(logInData: AuthData) {
 }
 
 async function logOut() {
-	const response = await authClient.delete("auth/log-out", {
+	const response = await authClient.delete("/log-out", {
 		withCredentials: true,
 	});
 	const result = response.data;
@@ -35,7 +35,7 @@ async function logOut() {
 }
 
 async function refreshToken() {
-	const response = await authClient.get("/auth/refresh-token", {
+	const response = await authClient.get("/refresh-token", {
 		withCredentials: true,
 	});
 	const token = response.data;

@@ -2,20 +2,16 @@ import api from "@/api/api";
 import Button from "@/components/Button";
 import Page from "@/components/Page";
 import { ProductType } from "@/types/product.type";
-import { useParams } from "next/navigation";
-import React from "react";
+import React, { useEffect } from "react";
 
-async function ProductPage({
-	params: { productId },
-}: {
+interface ProductPageProps {
 	params: { productId: string };
-}) {
-	// const params = useParams();
-	console.log("params:", productId);
+}
+
+async function ProductPage({ params: { productId } }: ProductPageProps) {
 	const product = (await api.products.getProductByProductId(
 		productId
 	)) as ProductType;
-
 	return (
 		<Page className="grid grid-cols-2 gap-x-5">
 			<div className="mt-9">
