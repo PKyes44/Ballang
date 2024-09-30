@@ -1,3 +1,4 @@
+import { CustomError } from "@/models/Error";
 import { AuthData } from "@/types/auth.type";
 import axios from "axios";
 import { sign } from "crypto";
@@ -14,7 +15,10 @@ async function signUp(signUpData: AuthData) {
 async function logIn(logInData: AuthData) {
 	const response = await authClient.post("/auth/log-in", logInData);
 	const result = response.data;
-	return result;
+
+	if (!result.success)
+		throw new CustomError(500, "회원가입에 실패하였습니다");
+	return result.result;
 }
 
 async function logOut() {

@@ -34,6 +34,7 @@ const buttonVariant = cva("font-semibold", {
 type ButtonVariants = VariantProps<typeof buttonVariant>;
 type ButtonProps = PropsWithChildren<ButtonVariants> & {
 	className?: string;
+	errorText?: string | null;
 };
 
 function Button({
@@ -42,21 +43,27 @@ function Button({
 	intent,
 	rounded,
 	className,
+	errorText,
 	children,
 	...props
 }: ButtonProps) {
 	return (
-		<button
-			className={`${buttonVariant({
-				size,
-				outline,
-				intent,
-				rounded,
-			})} ${className}`}
-			{...props}
-		>
-			{children}
-		</button>
+		<>
+			<button
+				className={`${buttonVariant({
+					size,
+					outline,
+					intent,
+					rounded,
+				})} ${className}`}
+				{...props}
+			>
+				{children}
+			</button>
+			{errorText && (
+				<small className="text-sm text-red-500">{errorText}</small>
+			)}
+		</>
 	);
 }
 
