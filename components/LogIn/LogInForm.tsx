@@ -4,39 +4,43 @@ import api from "@/api/api";
 import Button from "@/components/Button";
 import InputGroup from "@/components/Inputs/InputGroup";
 import { AuthData } from "@/types/auth.type";
+import useAuthStore from "@/zustand/auth.store";
 import { useMutation } from "@tanstack/react-query";
 import React, { ComponentProps, useRef, useState } from "react";
 
 const inputKeys = {
 	email: "email",
 	password: "password",
-	rePassword: "rePassword",
 };
 type InitialErrorMsgs = {
 	email: string | null;
 	password: string | null;
-	rePassword: string | null;
 	global: string | null;
 };
 const initialErrorMsgs: InitialErrorMsgs = {
 	email: null,
 	password: null,
-	rePassword: null,
 	global: null,
 };
 
-function SignUpForm() {
+function LogInForm() {
 	const formRef = useRef(null);
 	const [isDisabled, setIsDisabled] = useState(false);
 	const [errorMsgs, setErrorMsgs] =
 		useState<InitialErrorMsgs>(initialErrorMsgs);
 
-	const { mutate: signUp } = useMutation({
-		mutationFn: (signUpData: AuthData) => api.auth.signUp(signUpData),
+	const setIsLoggedIn = useAuthStore((state) => state.setIsLoggedIn);
+
+	const { mutate: logIn } = useMutation({
+		mutationFn: (logInData: AuthData) => api.auth.logIn(logInData),
 		onSuccess: (data) => {
-			console.log("signUp response data: ", data);
+			console.log("logIn response data: ", data);
+			if (data.success) {
+				setIsLoggedIn(true);
+			}
 		},
 		onError: (data) => {
+			setIsDisabled(false);
 			throwErrorMsg("global", data.message);
 		},
 		onMutate: () => {
@@ -59,17 +63,9 @@ function SignUpForm() {
 				inputKeys.password,
 				"비밀번호는 필수 요소입니다"
 			);
-		if (!formRef.current[inputKeys.rePassword])
-			return throwErrorMsg(
-				inputKeys.rePassword,
-				"비밀번호를 확인해주십시오"
-			);
 
 		const email = formRef.current[inputKeys.email]["value"] as string;
 		const password = formRef.current[inputKeys.password]["value"] as string;
-		const rePassword = formRef.current[inputKeys.rePassword][
-			"value"
-		] as string;
 
 		if (email.length === 0)
 			return throwErrorMsg(inputKeys.email, "이메일은 필수 요소입니다");
@@ -78,23 +74,12 @@ function SignUpForm() {
 				inputKeys.password,
 				"비밀번호는 필수 요소입니다"
 			);
-		if (rePassword.length === 0)
-			return throwErrorMsg(
-				inputKeys.rePassword,
-				"비밀번호를 확인해주십시오"
-			);
 
-		if (password !== password)
-			return throwErrorMsg(
-				inputKeys.rePassword,
-				"비밀번호가 맞지 않습니다"
-			);
-
-		const signUpData: AuthData = {
+		const logInData: AuthData = {
 			email,
 			password,
 		};
-		signUp(signUpData);
+		logIn(logInData);
 	};
 
 	const throwErrorMsg = (target: string, message: string) => {
@@ -125,23 +110,11 @@ function SignUpForm() {
 				disabled={isDisabled}
 				type="password"
 			/>
-			<InputGroup
-				label="비밀번호 확인"
-				name={inputKeys.rePassword}
-				errorText={errorMsgs.rePassword}
-				disabled={isDisabled}
-				type="password"
-			/>
-			<Button
-				className="mt-8"
-				size="md"
-				errorText={errorMsgs.global}
-				disabled={isDisabled}
-			>
-				회원가입하기
+			<Button className="mt-8" size="md" errorText={errorMsgs.global}>
+				로그인하기
 			</Button>
 		</form>
 	);
 }
 
-export default SignUpForm;
+export default LogInForm;

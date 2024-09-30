@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from "react";
+import React, { ComponentProps, PropsWithChildren } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 
 const buttonVariant = cva("font-semibold", {
@@ -32,10 +32,11 @@ const buttonVariant = cva("font-semibold", {
 });
 
 type ButtonVariants = VariantProps<typeof buttonVariant>;
-type ButtonProps = PropsWithChildren<ButtonVariants> & {
-	className?: string;
-	errorText?: string | null;
-};
+type ButtonProps = PropsWithChildren<ButtonVariants> &
+	Omit<ComponentProps<"button">, "className"> & {
+		className?: string;
+		errorText?: string | null;
+	};
 
 function Button({
 	size,

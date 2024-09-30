@@ -7,28 +7,37 @@ const baseURL = "https://api.ballang.yoojinyoung.com";
 const authClient = axios.create({ baseURL });
 
 async function signUp(signUpData: AuthData) {
-	const response = await authClient.post("/auth/sign-up", signUpData);
+	const response = await authClient.post("/auth/sign-up", signUpData, {
+		withCredentials: true,
+	});
 	const result = response.data;
 	return result;
 }
 
 async function logIn(logInData: AuthData) {
-	const response = await authClient.post("/auth/log-in", logInData);
+	const response = await authClient.post("/auth/log-in", logInData, {
+		withCredentials: true,
+	});
 	const result = response.data;
 
 	if (!result.success)
 		throw new CustomError(500, "회원가입에 실패하였습니다");
-	return result.result;
+
+	return result;
 }
 
 async function logOut() {
-	const response = await authClient.delete("auth/log-out");
+	const response = await authClient.delete("auth/log-out", {
+		withCredentials: true,
+	});
 	const result = response.data;
 	return result;
 }
 
 async function refreshToken() {
-	const response = await authClient.get("/auth/refresh-token");
+	const response = await authClient.get("/auth/refresh-token", {
+		withCredentials: true,
+	});
 	const token = response.data;
 	return token;
 }
