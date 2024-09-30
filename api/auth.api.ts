@@ -2,12 +2,10 @@ import { CustomError } from "@/models/Error";
 import { AuthData } from "@/types/auth.type";
 import axios from "axios";
 import { sign } from "crypto";
-
-const baseURL = "https://api.ballang.yoojinyoung.com/auth";
-const authClient = axios.create({ baseURL });
+import { ballangClient } from "./api";
 
 async function signUp(signUpData: AuthData) {
-	const response = await authClient.post("/sign-up", signUpData, {
+	const response = await ballangClient.post("/auth/sign-up", signUpData, {
 		withCredentials: true,
 	});
 	const result = response.data;
@@ -15,7 +13,7 @@ async function signUp(signUpData: AuthData) {
 }
 
 async function logIn(logInData: AuthData) {
-	const response = await authClient.post("/log-in", logInData, {
+	const response = await ballangClient.post("/auth//log-in", logInData, {
 		withCredentials: true,
 	});
 	const result = response.data;
@@ -27,7 +25,7 @@ async function logIn(logInData: AuthData) {
 }
 
 async function logOut() {
-	const response = await authClient.delete("/log-out", {
+	const response = await ballangClient.delete("/auth//log-out", {
 		withCredentials: true,
 	});
 	const result = response.data;
@@ -35,7 +33,7 @@ async function logOut() {
 }
 
 async function refreshToken() {
-	const response = await authClient.get("/refresh-token", {
+	const response = await ballangClient.get("/auth//refresh-token", {
 		withCredentials: true,
 	});
 	const token = response.data;
