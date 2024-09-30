@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import CartItem from "./Cart";
+import CartItem from "./CartItem";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import api from "@/api/api";
 import { space } from "postcss/lib/list";

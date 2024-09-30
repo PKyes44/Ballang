@@ -10,7 +10,6 @@ async function BrandsPage({
 }: {
 	searchParams?: { [key: string]: string };
 }) {
-	console.log("searchParams: ", searchParams);
 	let products;
 	if (Object.keys(searchParams!).length === 0)
 		products = (await api.products.getProducts()) as Products;
@@ -18,9 +17,6 @@ async function BrandsPage({
 		console.log("brandId is ", searchParams!.brandId);
 		products = await api.brands.getBrand(searchParams!.brandId);
 	}
-
-	console.log(products);
-
 	return (
 		<Page width="lg" title="Brands">
 			<BrandList />
