@@ -1,12 +1,9 @@
-import Button from "@/components/Button";
+import Page from "@/components/Page";
 
 export default function Home() {
 	return (
-		<div className="flex gap-x-5 items-center">
+		<Page width="lg" className="flex gap-x-5 items-center">
 			Ballang
-			<Button size="sm">Ballang</Button>
-			<Button>Ballang</Button>
-			<Button size="lg">Ballang</Button>
-		</div>
+		</Page>
 	);
 }

@@ -34,10 +34,18 @@ const buttonVariant = cva("", {
 type ButtonVariants = VariantProps<typeof buttonVariant>;
 type ButtonProps = PropsWithChildren<ButtonVariants>;
 
-function Button({ size, outline, intent, rounded, children }: ButtonProps) {
+function Button({
+	size,
+	outline,
+	intent,
+	rounded,
+	children,
+	...props
+}: ButtonProps) {
 	return (
 		<button
 			className={`${buttonVariant({ size, outline, intent, rounded })}`}
+			{...props}
 		>
 			{children}
 		</button>
