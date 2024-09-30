@@ -4,7 +4,6 @@ import api from "@/api/api";
 import Button from "@/components/Button/Button";
 import useAuthStore from "@/zustand/auth.store";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { clear } from "console";
 import React, { useEffect, useState } from "react";
 
 function AddCartButton({ productId }: { productId: number }) {

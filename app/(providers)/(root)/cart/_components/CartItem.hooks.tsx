@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
-import CartItem from "./CartItem";
+import { useState } from "react";
 import { Cart } from "@/types/cart.type";
 import { useMutation } from "@tanstack/react-query";
 import api from "@/api/api";

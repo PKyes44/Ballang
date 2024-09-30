@@ -1,10 +1,8 @@
 "use client";
 
-import api from "@/api/api";
 import Button from "@/components/Button/Button";
 import { Cart } from "@/types/cart.type";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import React, { useState } from "react";
+import React from "react";
 import useCartItem from "./CartItem.hooks";
 
 interface CartItemProps {

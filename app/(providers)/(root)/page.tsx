@@ -1,9 +1,6 @@
 import api from "@/api/api";
 import Page from "@/components/Page/Page";
-import ProductType from "./_components/Product";
 import { Products } from "@/types/product.type";
-import Product from "./_components/Product";
-import Link from "next/link";
 import ProductList from "./_components/ProductList";
 
 export default async function Home() {

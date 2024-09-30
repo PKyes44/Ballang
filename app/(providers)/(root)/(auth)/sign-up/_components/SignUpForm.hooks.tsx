@@ -2,8 +2,7 @@ import api from "@/api/api";
 import { inputKeys } from "@/models/Input";
 import { AuthData } from "@/types/auth.type";
 import { useMutation } from "@tanstack/react-query";
-import { APP_CLIENT_INTERNALS } from "next/dist/shared/lib/constants";
-import React, { ComponentProps, useRef, useState } from "react";
+import { ComponentProps, useRef, useState } from "react";
 
 type InitialErrorMsgs = {
 	email: string | null;

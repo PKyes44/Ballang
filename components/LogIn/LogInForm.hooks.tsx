@@ -3,7 +3,7 @@ import { inputKeys } from "@/models/Input";
 import { AuthData } from "@/types/auth.type";
 import useAuthStore from "@/zustand/auth.store";
 import { useMutation } from "@tanstack/react-query";
-import React, { ComponentProps, useRef, useState } from "react";
+import { ComponentProps, useRef, useState } from "react";
 
 type InitialErrorMsgs = {
 	email: string | null;

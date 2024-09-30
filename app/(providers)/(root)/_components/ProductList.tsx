@@ -2,7 +2,6 @@ import { Products } from "@/types/product.type";
 import Link from "next/link";
 import React from "react";
 import Product from "./Product";
-import api from "@/api/api";
 
 interface ProductListProps {
 	products: Products;

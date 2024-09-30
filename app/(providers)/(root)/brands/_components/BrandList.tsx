@@ -2,8 +2,7 @@
 
 import api from "@/api/api";
 import { useQuery } from "@tanstack/react-query";
-import { space } from "postcss/lib/list";
-import React, { useEffect } from "react";
+import React from "react";
 import Brand from "./Brand";
 import { BrandType } from "@/types/brand.type";
 import { useRouter } from "next/navigation";
@@ -32,7 +31,10 @@ function BrandList() {
 			</button>
 			<ul className="m-auto grid lg:grid-cols-6 gap-x-5 gap-y-5 justify-between text-sm md:grid-cols-4 sm:grid-cols-3">
 				{brands.map((brand: BrandType) => (
-					<li className="whitespace-nowrap text-center">
+					<li
+						className="whitespace-nowrap text-center"
+						key={brand.id}
+					>
 						<Brand
 							brand={brand}
 							handleClickBrandFilter={handleClickBrandFilter}

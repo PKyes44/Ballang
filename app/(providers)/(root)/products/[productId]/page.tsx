@@ -1,7 +1,6 @@
 import api from "@/api/api";
 import Page from "@/components/Page/Page";
 import { ProductType } from "@/types/product.type";
-import AddCartButton from "./_components/AddCartButton";
 import ProductDetail from "./_components/ProductDetail";
 
 interface ProductPageProps {

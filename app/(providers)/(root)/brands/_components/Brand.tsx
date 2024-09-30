@@ -1,7 +1,6 @@
 "use client";
 
 import { BrandType } from "@/types/brand.type";
-import { useRouter, useSearchParams } from "next/navigation";
 import React from "react";
 
 interface BrandProps {

@@ -3,7 +3,7 @@
 import api from "@/api/api";
 import useAuthStore from "@/zustand/auth.store";
 import { useQuery } from "@tanstack/react-query";
-import React, { PropsWithChildren, useEffect } from "react";
+import { PropsWithChildren, useEffect } from "react";
 
 function AuthProvider({ children }: PropsWithChildren) {
 	const isLoggedIn = useAuthStore((state) => state.isLoggedIn);

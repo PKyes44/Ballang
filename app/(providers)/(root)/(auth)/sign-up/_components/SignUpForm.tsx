@@ -1,12 +1,9 @@
 "use client";
 
-import api from "@/api/api";
 import Button from "@/components/Button/Button";
 import InputGroup from "@/components/Input/InputGroup";
 import { inputKeys } from "@/models/Input";
-import { AuthData } from "@/types/auth.type";
-import { useMutation } from "@tanstack/react-query";
-import React, { ComponentProps, useRef, useState } from "react";
+import React from "react";
 import useSignUpForm from "./SignUpForm.hooks";
 
 function SignUpForm() {
