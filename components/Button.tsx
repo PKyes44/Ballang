@@ -1,11 +1,11 @@
 import React, { PropsWithChildren } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 
-const buttonVariant = cva("", {
+const buttonVariant = cva("font-semibold", {
 	variants: {
 		size: {
 			sm: "py-2 px-8 text-sm",
-			md: "py-3 px-16",
+			md: "py-4 px-16",
 			lg: "py-4 px-24 text-lg",
 		},
 		intent: {
@@ -32,19 +32,27 @@ const buttonVariant = cva("", {
 });
 
 type ButtonVariants = VariantProps<typeof buttonVariant>;
-type ButtonProps = PropsWithChildren<ButtonVariants>;
+type ButtonProps = PropsWithChildren<ButtonVariants> & {
+	className?: string;
+};
 
 function Button({
 	size,
 	outline,
 	intent,
 	rounded,
+	className,
 	children,
 	...props
 }: ButtonProps) {
 	return (
 		<button
-			className={`${buttonVariant({ size, outline, intent, rounded })}`}
+			className={`${buttonVariant({
+				size,
+				outline,
+				intent,
+				rounded,
+			})} ${className}`}
 			{...props}
 		>
 			{children}

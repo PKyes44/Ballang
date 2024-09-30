@@ -18,8 +18,8 @@ function Header() {
 							<Link href="/brands">BRANDS</Link>
 						</li>
 						<li className="flex flex-row gap-x-5">
-							<Link href="/brands">회원가입</Link>
-							<Link href="/brands">로그인</Link>
+							<Link href="/sign-up">회원가입</Link>
+							<Link href="/log-in">로그인</Link>
 						</li>
 					</ul>
 				</nav>

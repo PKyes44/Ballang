@@ -4,7 +4,7 @@ import React, { PropsWithChildren } from "react";
 const pageVariant = cva("", {
 	variants: {
 		width: {
-			sm: "w-[900px]",
+			sm: "w-[400px]",
 			md: "w-[1100px]",
 			lg: "w-[1450px]",
 		},
