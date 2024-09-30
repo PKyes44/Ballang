@@ -54,7 +54,7 @@ function Header() {
 									</>
 								) : (
 									<>
-										<Link href="/sign-up">장바구니</Link>
+										<Link href="/cart">장바구니</Link>
 										<button onClick={() => logOut()}>
 											로그아웃
 										</button>

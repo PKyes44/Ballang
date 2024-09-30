@@ -4,6 +4,7 @@ import { cva, VariantProps } from "class-variance-authority";
 const buttonVariant = cva("font-semibold", {
 	variants: {
 		size: {
+			xs: "w-8 h-8",
 			sm: "py-2 px-8 text-sm",
 			md: "py-4 px-16",
 			lg: "py-4 px-24 text-lg",

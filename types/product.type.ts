@@ -1,4 +1,4 @@
-import { Brand } from "./brand.type";
+import { BrandType } from "./brand.type";
 
 export type ProductType = {
 	id: number;
@@ -9,6 +9,6 @@ export type ProductType = {
 	originalPrice: number;
 	deliveryType: string;
 	brandId: number;
-	brand: Brand;
+	brand: BrandType;
 };
 export type Products = ProductType[];

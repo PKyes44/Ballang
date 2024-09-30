@@ -1,4 +1,4 @@
-export type Brand = {
+export type BrandType = {
 	id: number;
 	nameKr: string;
 	nameEn: string;
