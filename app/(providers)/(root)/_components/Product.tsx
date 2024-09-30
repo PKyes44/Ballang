@@ -9,7 +9,7 @@ function Product({ product }: ProductProps) {
 	return (
 		<article className="w-full h-full flex flex-col text-sm gap-y-3">
 			<img
-				className="object-contain"
+				className="object-contain hover:scale-105 transition-all"
 				src={product.imgSrc}
 				alt="product Image"
 			/>

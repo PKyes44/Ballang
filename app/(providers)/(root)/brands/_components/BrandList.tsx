@@ -30,7 +30,7 @@ function BrandList() {
 			>
 				ALL
 			</button>
-			<ul className=" m-auto grid lg:grid-cols-6 gap-x-5 gap-y-5 justify-between text-sm md:grid-cols-4 sm:grid-cols-3">
+			<ul className="m-auto grid lg:grid-cols-6 gap-x-5 gap-y-5 justify-between text-sm md:grid-cols-4 sm:grid-cols-3">
 				{brands.map((brand: BrandType) => (
 					<li className="whitespace-nowrap text-center">
 						<Brand
