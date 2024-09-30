@@ -22,6 +22,8 @@ function Header() {
 		},
 	});
 
+	const handleShowLogInForm = () => {};
+
 	return (
 		<header className="h-16 border-b">
 			<Page width="lg" className="h-full flex items-center gap-x-20">
@@ -41,7 +43,7 @@ function Header() {
 								!isLoggedIn ? (
 									<>
 										<Link href="/sign-up">회원가입</Link>
-										<button onClick={setIsShowLogInForm}>
+										<button onClick={handleShowLogInForm}>
 											로그인
 										</button>
 									</>
