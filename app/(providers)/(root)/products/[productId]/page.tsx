@@ -1,12 +1,10 @@
 import api from "@/api/api";
-import Button from "@/components/Button";
-import Page from "@/components/Page";
+import Page from "@/components/Page/Page";
 import { ProductType } from "@/types/product.type";
-import React, { useEffect } from "react";
 import AddCartButton from "./_components/AddCartButton";
 
 interface ProductPageProps {
-	params: { productId: string };
+	params: { productId: number };
 }
 
 async function ProductPage({ params: { productId } }: ProductPageProps) {

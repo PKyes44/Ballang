@@ -1,11 +1,8 @@
 import { CustomError } from "@/models/Error";
-import axios from "axios";
-const baseURL = "https://api.ballang.yoojinyoung.com/products";
-
-const productClient = axios.create({ baseURL });
+import { ballangClient } from "./api";
 
 async function getProducts() {
-	const response = await productClient.get("");
+	const response = await ballangClient.get("/products");
 
 	if (response.data.error)
 		throw new CustomError(
@@ -16,7 +13,7 @@ async function getProducts() {
 	return result;
 }
 async function getProductByProductId(productId: number) {
-	const response = await productClient.get(`/${productId}`);
+	const response = await ballangClient.get(`/products/${productId}`);
 
 	if (response.data.error)
 		throw new CustomError(

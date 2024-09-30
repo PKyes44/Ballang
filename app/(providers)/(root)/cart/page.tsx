@@ -1,4 +1,4 @@
-import Page from "@/components/Page";
+import Page from "@/components/Page/Page";
 import React from "react";
 import CartList from "./_components/CartList";
 

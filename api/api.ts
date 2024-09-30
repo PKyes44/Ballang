@@ -5,7 +5,7 @@ import cartAPI from "./cart.api";
 import productAPI from "./product.api";
 
 const baseURL = "https://api.ballang.yoojinyoung.com";
-export const ballangClient = axios.create({ baseURL });
+export const ballangClient = axios.create({ baseURL, withCredentials: true });
 
 const api = {
 	auth: authAPI,

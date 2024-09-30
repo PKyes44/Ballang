@@ -1,12 +1,10 @@
 import { CustomError } from "@/models/Error";
 import { Carts } from "@/types/cart.type";
 import axios from "axios";
-
-const baseURL = "https://api.ballang.yoojinyoung.com/cart";
-const cartClient = axios.create({ baseURL, withCredentials: true });
+import { ballangClient } from "./api";
 
 async function getCart() {
-	const response = await cartClient.get("");
+	const response = await ballangClient.get("/cart");
 	if (response.data.error)
 		throw new CustomError(
 			400,
@@ -17,7 +15,7 @@ async function getCart() {
 }
 
 async function addItemToCartByProductId(productId: number) {
-	const response = await cartClient.post(`/products/${productId}`);
+	const response = await ballangClient.post(`/cart/products/${productId}`);
 	if (response.data.error)
 		throw new CustomError(
 			400,
@@ -28,7 +26,7 @@ async function addItemToCartByProductId(productId: number) {
 }
 
 async function removeItemFromCartByProductId(productId: number) {
-	const response = await cartClient.delete(`/products/${productId}`);
+	const response = await ballangClient.delete(`/cart/products/${productId}`);
 	if (response.data.error)
 		throw new CustomError(
 			400,
@@ -39,7 +37,9 @@ async function removeItemFromCartByProductId(productId: number) {
 }
 
 async function clearIteminCartByProductId(productId: number) {
-	const response = await cartClient.delete(`/products/${productId}/clear`);
+	const response = await ballangClient.delete(
+		`/cart/products/${productId}/clear`
+	);
 	if (response.data.error)
 		throw new CustomError(
 			400,

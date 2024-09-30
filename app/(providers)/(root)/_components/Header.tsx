@@ -1,7 +1,7 @@
 "use client";
 
 import api from "@/api/api";
-import Page from "@/components/Page";
+import Page from "@/components/Page/Page";
 import useAuthStore from "@/zustand/auth.store";
 import { useMutation } from "@tanstack/react-query";
 import Link from "next/link";

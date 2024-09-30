@@ -2,7 +2,7 @@
 
 import React from "react";
 import LogInForm from "./LogInForm";
-import Page from "../Page";
+import Page from "../Page/Page";
 import useAuthStore from "@/zustand/auth.store";
 
 function LogInModal() {

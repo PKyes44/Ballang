@@ -1,4 +1,4 @@
-import Page from "@/components/Page";
+import Page from "@/components/Page/Page";
 import React from "react";
 import SignUpForm from "./_components/SignUpForm";
 

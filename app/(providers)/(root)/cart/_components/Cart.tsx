@@ -1,7 +1,7 @@
 "use client";
 
 import api from "@/api/api";
-import Button from "@/components/Button";
+import Button from "@/components/Button/Button";
 import { Cart } from "@/types/cart.type";
 import { ProductType } from "@/types/product.type";
 import { useMutation, useQuery } from "@tanstack/react-query";
