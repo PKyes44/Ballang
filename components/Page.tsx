@@ -17,18 +17,24 @@ const pageVariant = cva("", {
 
 type PageVariant = VariantProps<typeof pageVariant>;
 type pageProps = {
-	className: string;
+	className?: string;
+	title?: string;
 };
 
 type PageProps = PageVariant & PropsWithChildren<pageProps>;
 
-function Page({ width, className, children }: PageProps) {
+function Page({ width, className, title, children }: PageProps) {
 	return (
 		<div
 			className={`m-auto ${className} ${pageVariant({
 				width,
 			})}`}
 		>
+			{title && (
+				<h1 className="font-extrabold text-3xl text-center w-full mt-24 mb-10">
+					{title}
+				</h1>
+			)}
 			{children}
 		</div>
 	);
