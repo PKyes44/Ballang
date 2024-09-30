@@ -18,7 +18,7 @@ async function BrandsPage({
 		products = await api.brands.getBrand(searchParams!.brandId);
 	}
 	return (
-		<Page width="lg" title="Brands">
+		<Page width="lg" title="Brands" className="mx-5">
 			<BrandList />
 			<ProductList products={products} />
 		</Page>

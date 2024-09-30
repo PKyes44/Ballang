@@ -12,7 +12,7 @@ export default async function Home() {
 		<Page
 			width="lg"
 			title="Trending"
-			className="flex flex-col gap-x-5 items-center"
+			className="flex flex-col gap-x-5 items-center mx-5"
 		>
 			<ProductList products={products} />
 		</Page>

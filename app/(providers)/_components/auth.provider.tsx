@@ -16,8 +16,9 @@ function AuthProvider({ children }: PropsWithChildren) {
 	});
 
 	useEffect(() => {
-		if (!token) return;
-		if (isLoggedIn || token.result) {
+		console.log("token: ", token);
+		if (token === undefined) return;
+		if (isLoggedIn || token) {
 			setIsLoggedIn(true);
 		}
 		if (isLoggedIn) {

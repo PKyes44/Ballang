@@ -6,7 +6,7 @@ import useAuthStore from "@/zustand/auth.store";
 import { useMutation } from "@tanstack/react-query";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useEffect } from "react";
 
 function Header() {
 	const router = useRouter();
@@ -29,9 +29,13 @@ function Header() {
 		setIsShowLogInForm();
 	};
 
+	useEffect(() => {
+		console.log(isAuthinitialzed, isLoggedIn);
+	}, []);
+
 	return (
 		<header className="h-16 border-b">
-			<Page width="lg" className="h-full flex items-center gap-x-20">
+			<Page width="lg" className="h-full flex items-center gap-x-20 mx-5">
 				<Link
 					href="/"
 					className="text-2xl font-extrabold whitespace-nowrap"

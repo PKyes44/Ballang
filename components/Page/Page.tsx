@@ -6,7 +6,7 @@ const pageVariant = cva("", {
 		width: {
 			sm: "w-[400px]",
 			md: "w-[950px]",
-			lg: "w-[1450px]",
+			lg: "max-w-[1450px]",
 		},
 	},
 	compoundVariants: [],
