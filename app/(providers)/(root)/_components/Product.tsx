@@ -6,7 +6,6 @@ interface ProductProps {
 }
 
 function Product({ product }: ProductProps) {
-	console.log("product:", product);
 	return (
 		<article className="w-full h-full flex flex-col text-sm gap-y-3">
 			<img

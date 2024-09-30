@@ -15,7 +15,7 @@ async function getProducts() {
 	const result = response.data.result;
 	return result;
 }
-async function getProductByProductId(productId: string) {
+async function getProductByProductId(productId: number) {
 	const response = await productClient.get(`/${productId}`);
 
 	if (response.data.error)

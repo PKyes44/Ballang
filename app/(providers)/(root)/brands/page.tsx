@@ -1,5 +1,3 @@
-"use client";
-
 import Page from "@/components/Page";
 import React from "react";
 import BrandList from "./_components/BrandList";
@@ -10,10 +8,18 @@ import { Products } from "@/types/product.type";
 async function BrandsPage({
 	searchParams,
 }: {
-	searchParams?: { [key: string]: string | string[] | undefined };
+	searchParams?: { [key: string]: string };
 }) {
-	console.log(searchParams);
-	const products = (await api.products.getProducts()) as Products;
+	console.log("searchParams: ", searchParams);
+	let products;
+	if (Object.keys(searchParams!).length === 0)
+		products = (await api.products.getProducts()) as Products;
+	else {
+		console.log("brandId is ", searchParams!.brandId);
+		products = await api.brands.getBrand(searchParams!.brandId);
+	}
+
+	console.log(products);
 
 	return (
 		<Page width="lg" title="Brands">

@@ -13,7 +13,7 @@ async function ProductList({ products }: ProductListProps) {
 		<ul className="w-full grid grid-cols-6 gap-x-8 gap-y-8">
 			{products.map((product) => {
 				return (
-					<li>
+					<li key={product.id}>
 						<Link href={`/products/${product.id}`}>
 							<Product product={product} />
 						</Link>

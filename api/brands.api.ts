@@ -10,7 +10,7 @@ async function getBrands() {
 }
 async function getBrand(brandId: string) {
 	const response = await brandClient.get(`/brands/${brandId}`);
-	const result = response.data;
+	const result = response.data.result.products;
 	return result;
 }
 
