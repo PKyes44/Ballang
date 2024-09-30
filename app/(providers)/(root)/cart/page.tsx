@@ -4,7 +4,7 @@ import CartList from "./_components/CartList";
 
 function CartPage() {
 	return (
-		<Page title="장바구니">
+		<Page title="장바구니" className="px-5">
 			<hr />
 			<CartList />
 		</Page>

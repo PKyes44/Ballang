@@ -21,13 +21,13 @@ function CartItem({ cartItem, invalidateQuery }: CartItemProps) {
 			<img
 				src={product.imgSrc}
 				alt="product image"
-				className="w-36 h-44"
+				className="md:w-36 md:h-44"
 			/>
 			<div className="flex flex-col gap-y-3">
 				<span className="font-extrabold">
 					{product.brand.nameKr}/{product.brand.nameEn}
 				</span>
-				<span className="font-bold">{product.name}</span>
+				<span className="font-medium">{product.name}</span>
 				<div className="font-extrabold flex gap-x-4">
 					<span className="line-through text-red-500">
 						₩{product.originalPrice}
