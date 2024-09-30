@@ -1,22 +1,22 @@
 import { CustomError } from "@/models/Error";
+import { Carts } from "@/types/cart.type";
 import axios from "axios";
-import { get } from "http";
 
 const baseURL = "https://api.ballang.yoojinyoung.com/cart";
-const cartClient = axios.create({ baseURL });
+const cartClient = axios.create({ baseURL, withCredentials: true });
 
 async function getCart() {
 	const response = await cartClient.get("");
-	if (response.data.result)
+	if (response.data.error)
 		throw new CustomError(
 			400,
 			"장바구니에 상품 데이터를 가져오는 데에 실패하였습니다"
 		);
-	const result = response.data.result;
+	const result = response.data.result["items"] as Carts;
 	return result;
 }
 
-async function addItemToCartByProductId(productId: string) {
+async function addItemToCartByProductId(productId: number) {
 	const response = await cartClient.post(`/products/${productId}`);
 	if (response.data.error)
 		throw new CustomError(
@@ -27,7 +27,7 @@ async function addItemToCartByProductId(productId: string) {
 	return result;
 }
 
-async function removeItemFromCartByProductId(productId: string) {
+async function removeItemFromCartByProductId(productId: number) {
 	const response = await cartClient.delete(`/products/${productId}`);
 	if (response.data.error)
 		throw new CustomError(
@@ -38,7 +38,7 @@ async function removeItemFromCartByProductId(productId: string) {
 	return result;
 }
 
-async function clearIteminCartByProductId(productId: string) {
+async function clearIteminCartByProductId(productId: number) {
 	const response = await cartClient.delete(`/products/${productId}/clear`);
 	if (response.data.error)
 		throw new CustomError(

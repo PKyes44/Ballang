@@ -5,16 +5,6 @@ interface ProductProps {
 	product: ProductType;
 }
 
-//     id: number;
-// name: string;
-// imgSrc: string;
-// onlineStock: number;
-// price: number;
-// originalPrice: number;
-// deliveryType: string;
-// brandId: number;
-// brand: Brand;
-
 function Product({ product }: ProductProps) {
 	console.log("product:", product);
 	return (

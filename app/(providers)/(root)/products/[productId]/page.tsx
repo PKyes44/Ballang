@@ -3,6 +3,7 @@ import Button from "@/components/Button";
 import Page from "@/components/Page";
 import { ProductType } from "@/types/product.type";
 import React, { useEffect } from "react";
+import AddCartButton from "./_components/AddCartButton";
 
 interface ProductPageProps {
 	params: { productId: string };
@@ -12,6 +13,7 @@ async function ProductPage({ params: { productId } }: ProductPageProps) {
 	const product = (await api.products.getProductByProductId(
 		productId
 	)) as ProductType;
+
 	return (
 		<Page className="grid grid-cols-2 gap-x-5">
 			<div className="mt-9">
@@ -39,7 +41,7 @@ async function ProductPage({ params: { productId } }: ProductPageProps) {
 					<span>잔여 재고</span>
 					<span className="font-normal">{product.onlineStock}</span>
 				</div>
-				<Button className="mt-10">장바구니에 담기</Button>
+				<AddCartButton productId={product.id} />
 			</div>
 		</Page>
 	);

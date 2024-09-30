@@ -9,11 +9,11 @@ const buttonVariant = cva("font-semibold", {
 			lg: "py-4 px-24 text-lg",
 		},
 		intent: {
-			primary: "bg-black text-white",
+			primary: "bg-black",
 		},
 		outline: {
 			true: "border border-black",
-			false: "border-none",
+			false: "border-none text-white",
 		},
 		rounded: {
 			none: "rounded-none",
@@ -22,7 +22,7 @@ const buttonVariant = cva("font-semibold", {
 			lg: "rounded-lg",
 		},
 	},
-	compoundVariants: [{ outline: true, className: "text-black" }],
+	compoundVariants: [{ outline: true, className: "text-black bg-white" }],
 	defaultVariants: {
 		size: "md",
 		intent: "primary",
