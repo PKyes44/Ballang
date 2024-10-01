@@ -5,22 +5,22 @@ import Page from "../Page/Page";
 import LogInForm from "./LogInForm";
 
 function LogInModal() {
-	const isShowLogInForm = useAuthStore((state) => state.isShowLogInForm);
+  const isShowLogInForm = useAuthStore((state) => state.isShowLogInForm);
 
-	return (
-		<>
-			{isShowLogInForm && (
-				<div className="absolute top-0 left-0 w-screen h-screen bg-black bg-opacity-40 grid place-content-center ">
-					<Page
-						title="로그인"
-						className="bg-white px-5 pb-10 rounded-lg w-full"
-					>
-						<LogInForm />
-					</Page>
-				</div>
-			)}
-		</>
-	);
+  return (
+    <>
+      {isShowLogInForm && (
+        <div className="absolute top-0 left-0 w-screen h-screen bg-black bg-opacity-40 grid place-content-center ">
+          <Page
+            title="로그인"
+            className="bg-white px-5 pb-10 rounded-lg w-full"
+          >
+            <LogInForm />
+          </Page>
+        </div>
+      )}
+    </>
+  );
 }
 
 export default LogInModal;

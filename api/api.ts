@@ -8,10 +8,10 @@ const baseURL = "https://api.ballang.yoojinyoung.com";
 export const ballangClient = axios.create({ baseURL, withCredentials: true });
 
 const api = {
-	auth: authAPI,
-	brands: brandAPI,
-	products: productAPI,
-	cart: cartAPI,
+  auth: authAPI,
+  brands: brandAPI,
+  products: productAPI,
+  cart: cartAPI,
 };
 
 export default api;

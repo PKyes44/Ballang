@@ -4,19 +4,19 @@ import { ProductType } from "@/types/product.type";
 import ProductDetail from "./_components/ProductDetail";
 
 interface ProductPageProps {
-	params: { productId: number };
+  params: { productId: number };
 }
 
 async function ProductPage({ params: { productId } }: ProductPageProps) {
-	const product = (await api.products.getProductByProductId(
-		productId
-	)) as ProductType;
+  const product = (await api.products.getProductByProductId(
+    productId,
+  )) as ProductType;
 
-	return (
-		<Page className="grid grid-cols-2 gap-x-5">
-			<ProductDetail product={product} />
-		</Page>
-	);
+  return (
+    <Page className="grid grid-cols-2 gap-x-5">
+      <ProductDetail product={product} />
+    </Page>
+  );
 }
 
 export default ProductPage;
