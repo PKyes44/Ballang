@@ -26,11 +26,8 @@ function useLogInForm() {
 
 	const { mutate: logIn } = useMutation({
 		mutationFn: (logInData: AuthData) => api.auth.logIn(logInData),
-		onSuccess: (data) => {
-			console.log("logIn response data: ", data);
-			if (data.success) {
-				setIsLoggedIn(true);
-			}
+		onSuccess: () => {
+			setIsLoggedIn(true);
 		},
 		onError: (data) => {
 			setIsDisabled(false);
