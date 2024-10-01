@@ -1,4 +1,3 @@
-import axios from "axios";
 import { ballangClient } from "./api";
 
 async function getBrands() {
