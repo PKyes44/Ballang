@@ -1,10 +1,9 @@
 "use client";
 
 import InputGroup from "@/components/Input/InputGroup";
-import React from "react";
+import { inputKeys } from "@/models/Input";
 import Button from "../Button/Button";
 import useLogInForm from "./LogInForm.hooks";
-import { inputKeys } from "@/models/Input";
 
 function LogInForm() {
 	const { formRef, errorMsgs, isDisabled, handleSubmitLogIn } =
@@ -18,18 +17,24 @@ function LogInForm() {
 		>
 			<InputGroup
 				label="이메일"
+				wrapperClassName="w-96"
 				name={inputKeys.email}
 				errorText={errorMsgs.email}
 				disabled={isDisabled}
 			/>
 			<InputGroup
 				label="비밀번호"
+				wrapperClassName="w-96"
 				name={inputKeys.password}
 				errorText={errorMsgs.password}
 				disabled={isDisabled}
 				type="password"
 			/>
-			<Button className="mt-8" size="md" errorText={errorMsgs.global}>
+			<Button
+				className="mt-8 w-96"
+				size="md"
+				errorText={errorMsgs.global}
+			>
 				로그인하기
 			</Button>
 		</form>
