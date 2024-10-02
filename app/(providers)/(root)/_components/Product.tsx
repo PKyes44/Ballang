@@ -18,7 +18,7 @@ function Product({ product }: ProductProps) {
         <span className="line-through text-red-500">
           ₩{product.originalPrice.toLocaleString("ko-KR")}
         </span>
-        <span>₩{product.price}</span>
+        <span>₩{product.price.toLocaleString("ko-KR")}</span>
       </div>
     </article>
   );

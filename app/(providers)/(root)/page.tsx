@@ -7,6 +7,8 @@ export const revalidate = 60 * 10;
 export default async function Home() {
   const products = await api.products.getProducts();
 
+  if (!products) return <span>데이터를 불러오는 데에 실패하였습니다</span>;
+
   return (
     <Page
       width="lg"

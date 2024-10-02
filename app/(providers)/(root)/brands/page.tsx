@@ -15,6 +15,9 @@ async function BrandsPage({
   else {
     products = await api.brands.getBrand(searchParams!.brandId);
   }
+
+  if (!products) return <span>데이터를 불러오는 데에 실패하였습니다</span>;
+
   return (
     <Page width="lg" title="Brands" className="mx-5">
       <BrandList

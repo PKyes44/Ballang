@@ -10,6 +10,8 @@ interface BrandListProps {
 async function BrandList({ activatedBrandId }: BrandListProps) {
   const brands = await api.brands.getBrands();
 
+  if (!brands) return <span>데이터를 불러오는 데에 실패하였습니다</span>;
+
   return (
     <article className="flex flex-col gap-y-7 mb-16">
       <Link

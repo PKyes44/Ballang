@@ -15,7 +15,8 @@ function useCartItem({ cartItem }: CartItemProps) {
   const [quantity, setQuentity] = useState(cartItem.quantity);
 
   const { mutate: addStock } = useMutation({
-    mutationFn: () => api.cart.addItemToCartByProductId(cartItem.product.id),
+    mutationFn: () =>
+      api.cart.addItemToCartByProductIdAtClientSide(cartItem.product.id),
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey });
       setQuentity(data.quantity);

@@ -2,7 +2,7 @@ import api from "@/api/api";
 import CartItem from "./CartItem";
 
 async function CartList() {
-  const cartList = await api.cart.getCart();
+  const cartList = await api.cart.getCartAtServerSide();
 
   return (
     <ul>
