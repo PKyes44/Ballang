@@ -1,8 +1,5 @@
-"use client";
-
 import api from "@/api/api";
 import { BrandType } from "@/types/brand.type";
-import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import Brand from "./Brand";
 
@@ -10,14 +7,9 @@ interface BrandListProps {
   activatedBrandId: string | null;
 }
 
-function BrandList({ activatedBrandId }: BrandListProps) {
-  const { data: brands, isLoading } = useQuery({
-    queryKey: ["brands"],
-    queryFn: () => api.brands.getBrands(),
-  });
+async function BrandList({ activatedBrandId }: BrandListProps) {
+  const brands = await api.brands.getBrands();
 
-  if (isLoading) return <span>브랜드 목록을 불러오는 중 ...</span>;
-  console.log("activatedBrandId: ", activatedBrandId);
   return (
     <article className="flex flex-col gap-y-7 mb-16">
       <Link

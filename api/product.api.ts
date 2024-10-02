@@ -1,7 +1,7 @@
 import { CustomError } from "@/models/Error";
 import { Products } from "@/types/product.type";
 import { ballangClient } from "./api";
-import { Response } from "./api.types";
+import { Response } from "../types/api.types";
 
 async function getProducts() {
   const response = await ballangClient.get<Response<Products>>("/products");
