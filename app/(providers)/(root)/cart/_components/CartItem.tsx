@@ -6,12 +6,11 @@ import useCartItem from "./CartItem.hooks";
 
 interface CartItemProps {
   cartItem: Cart;
-  invalidateQuery: () => void;
 }
 
-function CartItem({ cartItem, invalidateQuery }: CartItemProps) {
+function CartItem({ cartItem }: CartItemProps) {
   const { product, quantity, handleClickAddStock, handleClickRemoveStock } =
-    useCartItem({ cartItem, invalidateQuery });
+    useCartItem({ cartItem });
 
   return (
     <article className="flex flex-row py-4 gap-x-16 justify-between">

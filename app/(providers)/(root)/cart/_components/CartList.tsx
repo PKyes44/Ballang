@@ -1,28 +1,15 @@
-"use client";
-
-import React from "react";
-import CartItem from "./CartItem";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
 import api from "@/api/api";
-function CartList() {
-  const queryClient = useQueryClient();
+import CartItem from "./CartItem";
 
-  const { data: cartList, isLoading } = useQuery({
-    queryKey: ["cart"],
-    queryFn: () => api.cart.getCart(),
-  });
-  const invalidateQuery = () => {
-    queryClient.invalidateQueries({ queryKey: ["cart"] });
-  };
-
-  if (isLoading) return <span>장바구니 로딩 중 ...</span>;
+async function CartList() {
+  const cartList = await api.cart.getCart();
 
   return (
     <ul>
       {cartList!.map((cartItem) => {
         return (
           <li key={cartItem.product.id}>
-            <CartItem cartItem={cartItem} invalidateQuery={invalidateQuery} />
+            <CartItem cartItem={cartItem} />
             <hr />
           </li>
         );
