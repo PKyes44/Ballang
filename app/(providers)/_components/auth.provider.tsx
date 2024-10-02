@@ -6,8 +6,8 @@ import { useQuery } from "@tanstack/react-query";
 import { PropsWithChildren, useEffect } from "react";
 
 function AuthProvider({ children }: PropsWithChildren) {
-  const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
   const setIsLoggedIn = useAuthStore((state) => state.setIsLoggedIn);
+  const isAuthinitialzed = useAuthStore((state) => state.isAuthinitialzed);
   const initializeAuth = useAuthStore((state) => state.initializeAuth);
 
   const { data: token } = useQuery({
@@ -16,15 +16,16 @@ function AuthProvider({ children }: PropsWithChildren) {
   });
 
   useEffect(() => {
-    console.log("token: ", token);
-    if (token === undefined) return;
-    if (isLoggedIn || token) {
-      setIsLoggedIn(true);
+    if (!isAuthinitialzed) {
+      if (token === undefined) return;
+      if (token) {
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
+      }
+      initializeAuth();
     }
-    if (isLoggedIn) {
-      setIsLoggedIn(false);
-    }
-    initializeAuth();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token]);
 
   return children;

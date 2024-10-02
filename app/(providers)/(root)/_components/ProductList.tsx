@@ -1,6 +1,5 @@
 import { Products } from "@/types/product.type";
 import Link from "next/link";
-import React from "react";
 import Product from "./Product";
 
 interface ProductListProps {

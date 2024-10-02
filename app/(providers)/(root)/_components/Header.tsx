@@ -7,32 +7,9 @@ import { useMutation } from "@tanstack/react-query";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import AuthNavigation from "./AuthNavigation";
 
 function Header() {
-  const router = useRouter();
-  const isAuthinitialzed = useAuthStore((state) => state.isAuthinitialzed);
-  const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
-  const setIsLoggedIn = useAuthStore((state) => state.setIsLoggedIn);
-  const toggleIsShowLogInForm = useAuthStore(
-    (state) => state.toggleIsShowLogInForm
-  );
-
-  const { mutate: logOut } = useMutation({
-    mutationFn: () => api.auth.logOut(),
-    onSuccess: () => {
-      setIsLoggedIn(false);
-    },
-  });
-
-  const handleShowLogInForm = () => {
-    router.push("/");
-    toggleIsShowLogInForm();
-  };
-
-  useEffect(() => {
-    console.log(isAuthinitialzed, isLoggedIn);
-  }, []);
-
   return (
     <header className="h-16 border-b">
       <Page width="lg" className="h-full flex items-center gap-x-20 mx-5">
@@ -45,19 +22,7 @@ function Header() {
               <Link href="/brands">BRANDS</Link>
             </li>
             <li className="flex flex-row gap-x-5">
-              {isAuthinitialzed ? (
-                !isLoggedIn ? (
-                  <>
-                    <Link href="/sign-up">회원가입</Link>
-                    <button onClick={handleShowLogInForm}>로그인</button>
-                  </>
-                ) : (
-                  <>
-                    <Link href="/cart">장바구니</Link>
-                    <button onClick={() => logOut()}>로그아웃</button>
-                  </>
-                )
-              ) : null}
+              <AuthNavigation />
             </li>
           </ul>
         </nav>
