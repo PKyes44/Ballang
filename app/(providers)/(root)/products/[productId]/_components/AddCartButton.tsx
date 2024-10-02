@@ -1,10 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import api from "@/api/api";
 import Button from "@/components/Button/Button";
 import useAuthStore from "@/zustand/auth.store";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 function AddCartButton({ productId }: { productId: number }) {
   const queryClient = useQueryClient();
@@ -40,11 +41,13 @@ function AddCartButton({ productId }: { productId: number }) {
 
     addCartByProductId(productId);
     setIsExistInCart(true);
+    alert("장바구니에 추가되었습니다");
   };
 
   const handleClickClearCart = () => {
     clearCartByProductId(productId);
     setIsExistInCart(false);
+    alert("장바구니에서 제거되었습니다");
   };
 
   useEffect(() => {
@@ -60,11 +63,18 @@ function AddCartButton({ productId }: { productId: number }) {
   return (
     <>
       {isExistInCart ? (
-        <Button outline onClick={handleClickClearCart} className="mt-10">
+        <Button
+          outline
+          onClick={handleClickClearCart}
+          className="mt-10 transition hover:-translate-y-1"
+        >
           장바구니에 빼기
         </Button>
       ) : (
-        <Button onClick={handleClickAddCart} className="mt-10">
+        <Button
+          onClick={handleClickAddCart}
+          className="mt-10 transition hover:-translate-y-1"
+        >
           장바구니에 담기
         </Button>
       )}

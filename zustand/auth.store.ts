@@ -6,7 +6,7 @@ interface AuthState {
   isShowLogInForm: boolean;
   setIsLoggedIn: (isLoggedIn: boolean) => void;
   initializeAuth: () => void;
-  setIsShowLogInForm: () => void;
+  toggleIsShowLogInForm: () => void;
 }
 
 const useAuthStore = create<AuthState>((set) => ({
@@ -15,7 +15,10 @@ const useAuthStore = create<AuthState>((set) => ({
   isShowLogInForm: false,
   setIsLoggedIn: (isLoggedIn: boolean) => set(() => ({ isLoggedIn })),
   initializeAuth: () => set({ isAuthinitialzed: true }),
-  setIsShowLogInForm: () => set({ isShowLogInForm: true }),
+  toggleIsShowLogInForm: () =>
+    set((state) => {
+      return { isShowLogInForm: !state.isShowLogInForm };
+    }),
 }));
 
 export default useAuthStore;

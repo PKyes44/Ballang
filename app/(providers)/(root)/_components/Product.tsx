@@ -1,5 +1,4 @@
 import { ProductType } from "@/types/product.type";
-import React from "react";
 
 interface ProductProps {
   product: ProductType;
@@ -7,9 +6,9 @@ interface ProductProps {
 
 function Product({ product }: ProductProps) {
   return (
-    <article className="w-full h-full flex flex-col text-sm gap-y-3">
+    <article className="w-full h-full flex flex-col text-sm gap-y-3 group">
       <img
-        className="object-contain hover:scale-105 transition-all"
+        className="object-contain group-hover:scale-105 transition-all"
         src={product.imgSrc}
         alt="product Image"
       />

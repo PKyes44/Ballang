@@ -6,14 +6,16 @@ import useAuthStore from "@/zustand/auth.store";
 import { useMutation } from "@tanstack/react-query";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 function Header() {
   const router = useRouter();
   const isAuthinitialzed = useAuthStore((state) => state.isAuthinitialzed);
   const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
   const setIsLoggedIn = useAuthStore((state) => state.setIsLoggedIn);
-  const setIsShowLogInForm = useAuthStore((state) => state.setIsShowLogInForm);
+  const toggleIsShowLogInForm = useAuthStore(
+    (state) => state.toggleIsShowLogInForm
+  );
 
   const { mutate: logOut } = useMutation({
     mutationFn: () => api.auth.logOut(),
@@ -24,7 +26,7 @@ function Header() {
 
   const handleShowLogInForm = () => {
     router.push("/");
-    setIsShowLogInForm();
+    toggleIsShowLogInForm();
   };
 
   useEffect(() => {

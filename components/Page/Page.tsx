@@ -1,12 +1,12 @@
 import { cva, VariantProps } from "class-variance-authority";
-import React, { PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
 
 const pageVariant = cva("", {
   variants: {
     width: {
       sm: "max-w-[400px]",
       md: "max-w-[950px]",
-      lg: "max-w-[1450px]",
+      lg: "max-w-full",
     },
   },
   compoundVariants: [],

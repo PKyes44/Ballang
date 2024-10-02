@@ -1,6 +1,5 @@
-import React from "react";
-import AddCartButton from "./AddCartButton";
 import { ProductType } from "@/types/product.type";
+import AddCartButton from "./AddCartButton";
 
 interface ProductDetailProps {
   product: ProductType;
@@ -20,8 +19,8 @@ function ProductDetail({ product }: ProductDetailProps) {
         <span className="text-lg">{product.name}</span>
         <div className="grid grid-cols-2 pr-72 font-extrabold gap-y-5 mt-10">
           <span>정가</span>
-          <span className="line-through text-red-500">
-            ₩{product.originalPrice}
+          <span className="line-through text-red-500 font-medium">
+            ₩{product.originalPrice.toLocaleString("ko-Kr")}
           </span>
           <span>판매가</span>
           <span className="">₩{product.price}</span>

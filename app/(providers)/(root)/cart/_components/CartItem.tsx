@@ -27,10 +27,12 @@ function CartItem({ cartItem, invalidateQuery }: CartItemProps) {
           </span>
           <span className="font-medium">{product.name}</span>
           <div className="font-extrabold flex gap-x-4">
-            <span className="line-through text-red-500">
-              ₩{product.originalPrice}
+            <span className="line-through text-red-500 font-medium">
+              ₩{product.originalPrice.toLocaleString("ko-Kr")}
             </span>
-            <span className="font-extrabold">₩{product.price}</span>
+            <span className="font-extrabold">
+              ₩{product.price.toLocaleString("ko-Kr")}
+            </span>
           </div>
           <div className="text-sm">
             <span>{product.deliveryType} </span>|
