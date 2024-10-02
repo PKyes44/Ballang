@@ -27,7 +27,7 @@ function ProductDetail({ product }: ProductDetailProps) {
             ₩{product.originalPrice.toLocaleString("ko-Kr")}
           </span>
           <span>판매가</span>
-          <span className="">₩{product.price}</span>
+          <span className="">₩{product.price.toLocaleString("ko-Kr")}</span>
           <span>배송</span>
           <span className="font-normal">{product.deliveryType}</span>
           <span>잔여 재고</span>
