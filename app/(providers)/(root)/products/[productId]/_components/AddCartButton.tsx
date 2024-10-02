@@ -20,13 +20,15 @@ function AddCartButton({ productId }: { productId: number }) {
   const [isExistInCart, setIsExistInCart] = useState(false);
 
   const { data: productsInCart } = useQuery({
+    initialData: [],
     queryKey,
     queryFn: () => api.cart.getCartAtClientSide(),
+    retry: false,
   });
 
   const { mutate: addCartByProductId } = useMutation({
     mutationFn: (productId: number) =>
-      api.cart.addItemToCartByProductIdAtClientSide(productId),
+      api.cart.addItemToCartByProductIdAtServerSide(productId),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey });
       setIsExistInCart(true);
@@ -44,7 +46,6 @@ function AddCartButton({ productId }: { productId: number }) {
   });
 
   const handleClickAddCart = () => {
-    console.log("handleClickAddCart");
     if (!isAuthinitialzed || !isLoggedIn) return toggleIsShowLogInForm();
 
     addCartByProductId(productId);
