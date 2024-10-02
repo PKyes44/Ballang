@@ -1,5 +1,5 @@
 export const inputKeys = {
   email: "email",
   password: "password",
-  rePassword: "rePassword", // passwordConfirm
+  passwordConfirm: "passwordConfirm",
 };

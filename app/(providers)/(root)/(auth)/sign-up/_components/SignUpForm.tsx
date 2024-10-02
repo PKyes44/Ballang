@@ -3,7 +3,6 @@
 import Button from "@/components/Button/Button";
 import InputGroup from "@/components/Input/InputGroup";
 import { inputKeys } from "@/models/Input";
-import React from "react";
 import useSignUpForm from "./SignUpForm.hooks";
 
 function SignUpForm() {
@@ -31,8 +30,8 @@ function SignUpForm() {
       />
       <InputGroup
         label="비밀번호 확인"
-        name={inputKeys.rePassword}
-        errorText={errorMsgs.rePassword}
+        name={inputKeys.passwordConfirm}
+        errorText={errorMsgs.passwordConfirm}
         disabled={isDisabled}
         type="password"
       />

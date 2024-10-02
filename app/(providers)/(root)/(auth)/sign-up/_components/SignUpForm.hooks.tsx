@@ -7,13 +7,13 @@ import { ComponentProps, useRef, useState } from "react";
 type InitialErrorMsgs = {
   email: string | null;
   password: string | null;
-  rePassword: string | null;
+  passwordConfirm: string | null;
   global: string | null;
 };
 const initialErrorMsgs: InitialErrorMsgs = {
   email: null,
   password: null,
-  rePassword: null,
+  passwordConfirm: null,
   global: null,
 };
 function useSignUpForm() {
@@ -47,22 +47,33 @@ function useSignUpForm() {
       return throwErrorMsg(inputKeys.email, "이메일은 필수 요소입니다");
     if (!formRef.current[inputKeys.password])
       return throwErrorMsg(inputKeys.password, "비밀번호는 필수 요소입니다");
-    if (!formRef.current[inputKeys.rePassword])
-      return throwErrorMsg(inputKeys.rePassword, "비밀번호를 확인해주십시오");
+    if (!formRef.current[inputKeys.passwordConfirm])
+      return throwErrorMsg(
+        inputKeys.passwordConfirm,
+        "비밀번호를 확인해주십시오"
+      );
 
     const email = formRef.current[inputKeys.email]["value"] as string;
     const password = formRef.current[inputKeys.password]["value"] as string;
-    const rePassword = formRef.current[inputKeys.rePassword]["value"] as string;
+    const rePassword = formRef.current[inputKeys.passwordConfirm][
+      "value"
+    ] as string;
 
     if (email.length === 0)
       return throwErrorMsg(inputKeys.email, "이메일은 필수 요소입니다");
     if (password.length === 0)
       return throwErrorMsg(inputKeys.password, "비밀번호는 필수 요소입니다");
     if (rePassword.length === 0)
-      return throwErrorMsg(inputKeys.rePassword, "비밀번호를 확인해주십시오");
+      return throwErrorMsg(
+        inputKeys.passwordConfirm,
+        "비밀번호를 확인해주십시오"
+      );
 
     if (password !== password)
-      return throwErrorMsg(inputKeys.rePassword, "비밀번호가 맞지 않습니다");
+      return throwErrorMsg(
+        inputKeys.passwordConfirm,
+        "비밀번호가 맞지 않습니다"
+      );
 
     const signUpData: AuthData = {
       email,
