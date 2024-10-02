@@ -1,4 +1,3 @@
-import Product from "@/app/(providers)/(root)/_components/Product";
 import { ProductType } from "./product.type";
 
 export type Cart = {
@@ -11,3 +10,4 @@ export type Cart = {
   updatedAt: string;
 };
 export type Carts = Cart[];
+export type GetCart = { id: number; items: Carts };

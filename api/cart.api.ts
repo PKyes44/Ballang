@@ -1,9 +1,10 @@
 import { CustomError } from "@/models/Error";
-import { Carts } from "@/types/cart.type";
+import { Response } from "@/types/api.types";
+import { Carts, GetCart } from "@/types/cart.type";
 import { ballangClient } from "./api";
 
 async function getCart() {
-  const response = await ballangClient.get("/cart");
+  const response = await ballangClient.get<Response<GetCart>>("/cart");
   if (response.data.error)
     throw new CustomError(
       400,
