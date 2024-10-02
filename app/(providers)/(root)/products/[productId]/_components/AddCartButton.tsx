@@ -7,34 +7,38 @@ import useAuthStore from "@/zustand/auth.store";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 
+const queryKey = ["cart"];
+
 function AddCartButton({ productId }: { productId: number }) {
   const queryClient = useQueryClient();
   const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
+  const isAuthinitialzed = useAuthStore((state) => state.isAuthinitialzed);
   const toggleIsShowLogInForm = useAuthStore(
     (state) => state.toggleIsShowLogInForm
   );
-  const isAuthinitialzed = useAuthStore((state) => state.isAuthinitialzed);
   const [isExistInCart, setIsExistInCart] = useState(false);
 
   const { data: productsInCart } = useQuery({
-    queryKey: ["cart"],
+    queryKey,
     queryFn: () => api.cart.getCart(),
   });
 
   const { mutate: addCartByProductId } = useMutation({
     mutationFn: (productId: number) =>
       api.cart.addItemToCartByProductId(productId),
-    onSuccess: (data) => {
-      console.log(data);
-      queryClient.invalidateQueries({ queryKey: ["cart"] });
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey });
+      setIsExistInCart(true);
+      alert("장바구니에 추가되었습니다");
     },
   });
   const { mutate: clearCartByProductId } = useMutation({
     mutationFn: (productId: number) =>
       api.cart.clearIteminCartByProductId(productId),
-    onSuccess: (data) => {
-      console.log(data);
-      queryClient.invalidateQueries({ queryKey: ["cart"] });
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey });
+      setIsExistInCart(false);
+      alert("장바구니에서 제거되었습니다");
     },
   });
 
@@ -42,18 +46,13 @@ function AddCartButton({ productId }: { productId: number }) {
     if (!isAuthinitialzed || !isLoggedIn) return toggleIsShowLogInForm();
 
     addCartByProductId(productId);
-    setIsExistInCart(true);
-    alert("장바구니에 추가되었습니다");
   };
 
   const handleClickClearCart = () => {
     clearCartByProductId(productId);
-    setIsExistInCart(false);
-    alert("장바구니에서 제거되었습니다");
   };
 
   useEffect(() => {
-    console.log(productsInCart);
     if (!productsInCart || productsInCart.length === 0)
       return setIsExistInCart(false);
     productsInCart.forEach((cart) => {
@@ -62,6 +61,7 @@ function AddCartButton({ productId }: { productId: number }) {
       }
     });
   }, [productsInCart]);
+
   return (
     <>
       {isExistInCart ? (
