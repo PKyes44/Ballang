@@ -13,8 +13,8 @@ function LogInModal() {
   const handleClickHideLogInForm: ComponentProps<"article">["onClick"] = (
     e
   ) => {
-    const target = e.target;
-    if (target.localName === "article") {
+    console.log(e.target === e.currentTarget);
+    if (e.target === e.currentTarget) {
       toggleIsShowLogInForm();
     }
   };
@@ -22,7 +22,7 @@ function LogInModal() {
     <>
       {isShowLogInForm && (
         <article
-          className="dim absolute top-0 left-0 w-screen h-screen bg-black bg-opacity-40 grid place-content-center"
+          className="absolute top-0 left-0 w-screen h-screen bg-black bg-opacity-40 grid place-content-center"
           onClick={handleClickHideLogInForm}
         >
           <Page

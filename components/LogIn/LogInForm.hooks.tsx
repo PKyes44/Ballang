@@ -23,11 +23,15 @@ function useLogInForm() {
     useState<InitialErrorMsgs>(initialErrorMsgs);
 
   const setIsLoggedIn = useAuthStore((state) => state.setIsLoggedIn);
+  const toggleIsShowLogInForm = useAuthStore(
+    (state) => state.toggleIsShowLogInForm
+  );
 
   const { mutate: logIn } = useMutation({
     mutationFn: (logInData: AuthData) => api.auth.logIn(logInData),
     onSuccess: () => {
       setIsLoggedIn(true);
+      toggleIsShowLogInForm();
     },
     onError: (data) => {
       setIsDisabled(false);

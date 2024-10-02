@@ -10,7 +10,9 @@ import { useEffect, useState } from "react";
 function AddCartButton({ productId }: { productId: number }) {
   const queryClient = useQueryClient();
   const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
-  const setIsShowLogInForm = useAuthStore((state) => state.setIsShowLogInForm);
+  const toggleIsShowLogInForm = useAuthStore(
+    (state) => state.toggleIsShowLogInForm
+  );
   const isAuthinitialzed = useAuthStore((state) => state.isAuthinitialzed);
   const [isExistInCart, setIsExistInCart] = useState(false);
 
@@ -37,7 +39,7 @@ function AddCartButton({ productId }: { productId: number }) {
   });
 
   const handleClickAddCart = () => {
-    if (!isAuthinitialzed || !isLoggedIn) return setIsShowLogInForm();
+    if (!isAuthinitialzed || !isLoggedIn) return toggleIsShowLogInForm();
 
     addCartByProductId(productId);
     setIsExistInCart(true);
