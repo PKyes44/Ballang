@@ -4,6 +4,7 @@
 import api from "@/api/api";
 import Button from "@/components/Button/Button";
 import useAuthStore from "@/zustand/auth.store";
+import useModalStore from "@/zustand/modal.store";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 
@@ -13,7 +14,7 @@ function AddCartButton({ productId }: { productId: number }) {
   const queryClient = useQueryClient();
   const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
   const isAuthinitialzed = useAuthStore((state) => state.isAuthinitialzed);
-  const toggleIsShowLogInForm = useAuthStore(
+  const toggleIsShowLogInForm = useModalStore(
     (state) => state.toggleIsShowLogInForm
   );
   const [isExistInCart, setIsExistInCart] = useState(false);
@@ -43,6 +44,7 @@ function AddCartButton({ productId }: { productId: number }) {
   });
 
   const handleClickAddCart = () => {
+    console.log("handleClickAddCart");
     if (!isAuthinitialzed || !isLoggedIn) return toggleIsShowLogInForm();
 
     addCartByProductId(productId);

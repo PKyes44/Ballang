@@ -1,6 +1,6 @@
-import React, { PropsWithChildren } from "react";
-import Header from "./_components/Header";
 import LogInModal from "@/components/LogIn/LogInModal";
+import { PropsWithChildren } from "react";
+import Header from "./_components/Header";
 
 function RootLayout({ children }: PropsWithChildren) {
   return (

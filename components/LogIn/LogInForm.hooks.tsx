@@ -2,6 +2,7 @@ import api from "@/api/api";
 import { inputKeys } from "@/models/Input";
 import { AuthData } from "@/types/auth.type";
 import useAuthStore from "@/zustand/auth.store";
+import useModalStore from "@/zustand/modal.store";
 import { useMutation } from "@tanstack/react-query";
 import { ComponentProps, useRef, useState } from "react";
 
@@ -23,7 +24,7 @@ function useLogInForm() {
     useState<InitialErrorMsgs>(initialErrorMsgs);
 
   const setIsLoggedIn = useAuthStore((state) => state.setIsLoggedIn);
-  const toggleIsShowLogInForm = useAuthStore(
+  const toggleIsShowLogInForm = useModalStore(
     (state) => state.toggleIsShowLogInForm
   );
 

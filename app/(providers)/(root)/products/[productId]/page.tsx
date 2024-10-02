@@ -9,7 +9,7 @@ interface ProductPageProps {
 
 async function ProductPage({ params: { productId } }: ProductPageProps) {
   const product = (await api.products.getProductByProductId(
-    productId,
+    productId
   )) as ProductType;
 
   return (
