@@ -28,7 +28,7 @@ function AddCartButton({ productId }: { productId: number }) {
 
   const { mutate: addCartByProductId } = useMutation({
     mutationFn: (productId: number) =>
-      api.cart.addItemToCartByProductIdAtServerSide(productId),
+      api.cart.addItemToCartByProductIdAtClientSide(productId),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey });
       setIsExistInCart(true);
