@@ -63,18 +63,11 @@ function AddCartButton({ productId }: { productId: number }) {
   return (
     <>
       {isExistInCart ? (
-        <Button
-          outline
-          onClick={handleClickClearCart}
-          className="mt-10 transition hover:-translate-y-1"
-        >
+        <Button outline onClick={handleClickClearCart} className="mt-10">
           장바구니에 빼기
         </Button>
       ) : (
-        <Button
-          onClick={handleClickAddCart}
-          className="mt-10 transition hover:-translate-y-1"
-        >
+        <Button onClick={handleClickAddCart} className="mt-10">
           장바구니에 담기
         </Button>
       )}

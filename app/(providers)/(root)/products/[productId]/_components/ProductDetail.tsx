@@ -1,4 +1,5 @@
 import { ProductType } from "@/types/product.type";
+import Link from "next/link";
 import AddCartButton from "./AddCartButton";
 
 interface ProductDetailProps {
@@ -12,9 +13,12 @@ function ProductDetail({ product }: ProductDetailProps) {
         <img src={product.imgSrc} alt="product image" className="w-full" />
       </div>
       <div className="mt-16 flex flex-col gap-y-2">
-        <span className="font-extrabold">
+        <Link
+          href={`/brands?brandId=${product.brandId}`}
+          className="font-extrabold"
+        >
           {product.brand.nameKr} / {product.brand.nameEn}
-        </span>
+        </Link>
         <hr />
         <span className="text-lg">{product.name}</span>
         <div className="grid grid-cols-2 pr-72 font-extrabold gap-y-5 mt-10">

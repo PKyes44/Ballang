@@ -1,36 +1,39 @@
-import React, { ComponentProps, PropsWithChildren } from "react";
 import { cva, VariantProps } from "class-variance-authority";
+import { ComponentProps, PropsWithChildren } from "react";
 
-const buttonVariant = cva("font-semibold", {
-  variants: {
-    size: {
-      xs: "w-8 h-8",
-      sm: "py-2 px-8 text-sm",
-      md: "py-4 px-16",
-      lg: "py-4 px-24 text-lg",
+const buttonVariant = cva(
+  "font-semibold  transition hover:-translate-y-1 active:translate-y-1",
+  {
+    variants: {
+      size: {
+        xs: "w-8 h-8",
+        sm: "py-2 px-8 text-sm",
+        md: "py-4 px-16",
+        lg: "py-4 px-24 text-lg",
+      },
+      intent: {
+        primary: "bg-black",
+      },
+      outline: {
+        true: "border border-black",
+        false: "border-none text-white",
+      },
+      rounded: {
+        none: "rounded-none",
+        sm: "rounded-sm",
+        md: "rounded-md",
+        lg: "rounded-lg",
+      },
     },
-    intent: {
-      primary: "bg-black",
+    compoundVariants: [{ outline: true, className: "text-black bg-white" }],
+    defaultVariants: {
+      size: "md",
+      intent: "primary",
+      outline: false,
+      rounded: "none",
     },
-    outline: {
-      true: "border border-black",
-      false: "border-none text-white",
-    },
-    rounded: {
-      none: "rounded-none",
-      sm: "rounded-sm",
-      md: "rounded-md",
-      lg: "rounded-lg",
-    },
-  },
-  compoundVariants: [{ outline: true, className: "text-black bg-white" }],
-  defaultVariants: {
-    size: "md",
-    intent: "primary",
-    outline: false,
-    rounded: "none",
-  },
-});
+  }
+);
 
 type ButtonVariants = VariantProps<typeof buttonVariant>;
 type ButtonProps = PropsWithChildren<ButtonVariants> &
